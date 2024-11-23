@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="main.js" defer></script>
+    <title>Book API Interface</title>
+</head>
+<body class="text-light">
+
+<div class="container my-5">
+    <div class="card shadow-lg">
+        <div class="card-header text-center bg-primary text-white">
+            <h2>Book API Interface</h2>
+        </div>
+        <div class="card-body p-4">
+            <ul class="nav nav-tabs" id="bookTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="create-tab" data-bs-toggle="tab" href="#create" role="tab" aria-controls="create" aria-selected="true">Create Book</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="read-tab" data-bs-toggle="tab" href="#read" role="tab" aria-controls="read" aria-selected="false">Get Book</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="update-tab" data-bs-toggle="tab" href="#update" role="tab" aria-controls="update" aria-selected="false">Update Book</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="delete-tab" data-bs-toggle="tab" href="#delete" role="tab" aria-controls="delete" aria-selected="false">Delete Book</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="all-tab" data-bs-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="false">All Books</a>
+                </li>
+            </ul>
+            <div class="tab-content mt-4">
+                <div class="tab-pane fade show active" id="create" role="tabpanel" aria-labelledby="create-tab">
+                    <form id="createBookForm">
+                        <div class="mb-3">
+                            <label for="createTitle" class="form-label">Title:</label>
+                            <input type="text" class="form-control" id="createTitle" name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="createAuthor" class="form-label">Author:</label>
+                            <input type="text" class="form-control" id="createAuthor" name="author" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="createDescription" class="form-label">Description:</label>
+                            <textarea class="form-control" id="createDescription" name="description" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="createPublishedYear" class="form-label">Published Year:</label>
+                            <input type="number" class="form-control" id="createPublishedYear" name="published_year" required>
+                        </div>
+                        <button type="button" class="btn btn-success w-100" onclick="createBook()">Create Book</button>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="read" role="tabpanel" aria-labelledby="read-tab">
+                    <form id="readBookForm">
+                        <div class="mb-3">
+                            <label for="readBookId" class="form-label">Book ID:</label>
+                            <input type="text" class="form-control" id="readBookId" name="id" required>
+                        </div>
+                        <button type="button" class="btn btn-info w-100" onclick="getBook()">Get Book</button>
+                    </form>
+                    <div id="bookDetails" class="mt-3"></div>
+                </div>
+                <div class="tab-pane fade" id="update" role="tabpanel" aria-labelledby="update-tab">
+                    <form id="updateBookForm">
+                        <div class="mb-3">
+                            <label for="updateBookId" class="form-label">Book ID:</label>
+                            <input type="text" class="form-control" id="updateBookId" name="id" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="updateTitle" class="form-label">Title:</label>
+                            <input type="text" class="form-control" id="updateTitle" name="title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="updateAuthor" class="form-label">Author:</label>
+                            <input type="text" class="form-control" id="updateAuthor" name="author">
+                        </div>
+                        <div class="mb-3">
+                            <label for="updateDescription" class="form-label">Description:</label>
+                            <textarea class="form-control" id="updateDescription" name="description"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="updatePublishedYear" class="form-label">Published Year:</label>
+                            <input type="number" class="form-control" id="updatePublishedYear" name="published_year">
+                        </div>
+                        <button type="button" class="btn btn-warning w-100" onclick="updateBook()">Update Book</button>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="delete" role="tabpanel" aria-labelledby="delete-tab">
+                    <form id="deleteBookForm">
+                        <div class="mb-3">
+                            <label for="deleteBookId" class="form-label">Book ID:</label>
+                            <input type="text" class="form-control" id="deleteBookId" name="id" required>
+                        </div>
+                        <button type="button" class="btn btn-danger w-100" onclick="deleteBook()">Delete Book</button>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all-tab">
+                    <button class="btn btn-secondary w-100 mb-3" onclick="getAllBooks()">Get All Books</button>
+                    <div id="allBooks"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
